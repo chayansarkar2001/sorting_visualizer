@@ -120,3 +120,86 @@ const selectionSort = async () => {
     await enabled()
 }
 selectionSortBtn.addEventListener('click',selectionSort);
+
+// Insertion Sort Function
+const insertionSort = async () => {
+    disabled()
+    const noOfBars = sizeBar.value; 
+    // create Array of all the bars
+    const arr = Array.from(barsContainer.querySelectorAll('.bar'));
+
+    for(let i=1; i<noOfBars; i++){
+        j=i-1
+        key=arr[i].clientHeight
+        arr[i].style.backgroundColor = 'cyan'
+        while((j>=0) && (key<arr[j].clientHeight)){
+            await sleep(3000-speed)
+            swap(arr[j],arr[j+1])
+            arr[j].style.backgroundColor = 'cyan'
+            arr[j+1].style.backgroundColor = 'yellow'
+            if(i-j>1){arr[i].style.backgroundColor = '#a9a8dd'}
+            j-=1
+        }
+        await sleep(3000-speed)
+        arr[j+1].style.backgroundColor = 'yellow'
+        arr[i].style.backgroundColor = 'yellow'
+    }
+    enabled()
+}
+insertionSortBtn.addEventListener('click',insertionSort) 
+
+// Quick Sort Function
+const quickSort = async () => {
+    disabled()
+    const noOfBars = sizeBar.value; 
+    // create Array of all the bars
+    const arr = Array.from(barsContainer.querySelectorAll('.bar'));
+
+    async function partition(l,r,arr){
+        let ptr = l
+        let pivot = arr[r]
+        pivot.style.backgroundColor = 'green'
+        for(let i=l;i<r;i+=1){
+            arr[i].style.backgroundColor = 'cyan'            
+            await sleep(3000-speed)
+            if(arr[i].clientHeight <= pivot.clientHeight){
+                swap(arr[i],arr[ptr])
+                await sleep(3000-speed)
+                arr[ptr].style.backgroundColor = 'yellow'
+                ptr+=1
+            }
+            arr[i].style.backgroundColor = 'yellow'
+            arr[ptr].style.backgroundColor = 'red'
+            await sleep(3000-speed)
+        }
+        await sleep(3000-speed)
+        swap(arr[r],arr[ptr])
+        await sleep(3000-speed)
+        arr[ptr].style.backgroundColor = 'yellow'
+        arr[r].style.backgroundColor = 'yellow'
+        return ptr 
+    }
+    async function _quickSort(l,r,arr){
+        let stack = new Array(r-l+1)
+        stack.fill(0)
+        let top = -1
+        stack[++top]=l
+        stack[++top]=r
+        while(top>=0){
+            let r=stack[top--]
+            let l=stack[top--]
+            let p = await partition(l,r,arr)
+            if(p+1<r){
+                stack[++top]=p+1
+                stack[++top]=r
+            }
+            if (l<p-1){
+                stack[++top]=l
+                stack[++top]=p-1
+            }
+        }
+    }
+    await _quickSort(0,noOfBars-1,arr)
+    enabled()
+}
+quickSortBtn.addEventListener('click',quickSort)
