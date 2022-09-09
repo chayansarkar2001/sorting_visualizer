@@ -143,6 +143,10 @@ const insertionSort = async () => {
         await sleep(3000-speed)
         arr[j+1].style.backgroundColor = 'yellow'
         arr[i].style.backgroundColor = 'yellow'
+        for(let bar=0;bar<=i;bar++){
+            arr[bar].style.backgroundColor='green'
+        }
+        await sleep(3000-speed)
     }
     enabled()
 }
@@ -158,7 +162,7 @@ const quickSort = async () => {
     async function partition(l,r,arr){
         let ptr = l
         let pivot = arr[r]
-        pivot.style.backgroundColor = 'green'
+        pivot.style.backgroundColor = 'blue'
         for(let i=l;i<r;i+=1){
             arr[i].style.backgroundColor = 'cyan'            
             await sleep(3000-speed)
@@ -189,13 +193,18 @@ const quickSort = async () => {
             let r=stack[top--]
             let l=stack[top--]
             let p = await partition(l,r,arr)
+            arr[p].style.backgroundColor='green'
             if(p+1<r){
                 stack[++top]=p+1
                 stack[++top]=r
+            }else if(r==p+1){
+                arr[p+1].style.backgroundColor='green'
             }
             if (l<p-1){
                 stack[++top]=l
                 stack[++top]=p-1
+            }else if(l==p-1){
+                arr[p-1].style.backgroundColor = 'green'
             }
         }
     }
