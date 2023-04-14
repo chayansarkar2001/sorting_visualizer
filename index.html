@@ -11,18 +11,18 @@
 <body>
     <h1>Sorting Visualizer</h1>
     <nav class="navbar">
-    <div>
-    <button class="btn btn-outline-info sort" id="newArrayBtn">New Array</button>
-    <span><input type="range" id="size" class="InputRange" min="5" max="70" step="5" value="15">Size</span>
-    <span><input type="range" id="speed" class="InputRange" min="1000" max="3000" step="400" value="2600">Speed</span>
-    </div>
-    <div>
-    <button class="btn btn-outline-primary sort" id="bubbleSortBtn">Bubble Sort</button>
-    <button class="btn btn-outline-primary sort" id="selectionSortBtn">Selection Sort</button>
-    <button class="btn btn-outline-primary sort" id="insertionSortBtn">Insertion Sort</button>
-    <button class="btn btn-outline-primary sort" id="quickSortBtn">Quick Sort</button>
-    <button class="btn btn-outline-primary sort" id="mergeSortBtn" disabled>Merge Sort</button>
-    </div>
+        <div class="box">
+            <button class="btn btn-outline-info sort" id="newArrayBtn">New Array</button>
+            <span><input type="range" id="size" class="InputRange" min="5" max="70" step="5" value="15">Size</span>
+            <span><input type="range" id="speed" class="InputRange" min="1000" max="3000" step="400" value="2600">Speed</span>
+        </div>
+        <div class="box">
+            <button class="btn btn-outline-primary sort" id="bubbleSortBtn">Bubble Sort</button>
+            <button class="btn btn-outline-primary sort" id="selectionSortBtn">Selection Sort</button>
+            <button class="btn btn-outline-primary sort" id="insertionSortBtn">Insertion Sort</button>
+            <button class="btn btn-outline-primary sort" id="quickSortBtn">Quick Sort</button>
+            <button class="btn btn-outline-primary sort" id="mergeSortBtn" disabled>Merge Sort</button>
+        </div>
     </nav>
     <div id="barsContainer"></div>
 
