@@ -27,7 +27,7 @@ body>h1 {
 .InputRange {
     margin: 0 10px;
 }
-.class {
+.box {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
