@@ -5,7 +5,7 @@ const bubbleSortBtn = document.getElementById('bubbleSortBtn')
 const selectionSortBtn = document.getElementById('selectionSortBtn')
 const insertionSortBtn = document.getElementById('insertionSortBtn')
 const quickSortBtn = document.getElementById('quickSortBtn')
-const mergeSortBtn = document.getElementById('mergeSortBtn')
+// const mergeSortBtn = document.getElementById('mergeSortBtn')
 const sizeBar = document.getElementById('size');
 const speedBar = document.getElementById('speed');
 
@@ -48,8 +48,8 @@ speedBar.addEventListener('change',()=>{
 const disabled = ()=>{
     bubbleSortBtn.disabled = true
     selectionSortBtn.disabled = true
-    // insertionSortBtn.disabled = true
-    // quickSortBtn.disabled = true
+    insertionSortBtn.disabled = true
+    quickSortBtn.disabled = true
     // mergeSortBtn.disabled = true
 }
 
@@ -57,11 +57,12 @@ const disabled = ()=>{
 const enabled = ()=>{
     bubbleSortBtn.disabled = false
     selectionSortBtn.disabled = false
-    // insertionSortBtn.disabled = false
-    // quickSortBtn.disabled = false
+    insertionSortBtn.disabled = false
+    quickSortBtn.disabled = false
     // mergeSortBtn.disabled = false
 }
 
+newArr();  // To create array first time
 // Bubble Sort function
 const bubbleSort = async () => {
     disabled()
@@ -84,7 +85,7 @@ const bubbleSort = async () => {
         }
         arr[noOfBars-1-i].style.backgroundColor = 'green';
     }
-    await enabled()
+    enabled()
 }
 bubbleSortBtn.addEventListener('click',bubbleSort);
 
@@ -117,7 +118,7 @@ const selectionSort = async () => {
         if(min!=i){arr[min].style.backgroundColor = 'yellow'};
         await sleep(3000-speed);
     }
-    await enabled()
+    enabled()
 }
 selectionSortBtn.addEventListener('click',selectionSort);
 
